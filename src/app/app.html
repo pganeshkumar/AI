@@ -1,0 +1,185 @@
+<!-- Home page: Top menu, full-width carousel, 8 cards grid, stylish footer -->
+
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#94a3b8;
+    --accent1:#ff5a7c;
+    --accent2:#7c4dff;
+    --glass: rgba(255,255,255,0.04);
+    --gap: 1rem;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  }
+
+  *{box-sizing:border-box}
+  body,app-root{background:linear-gradient(180deg,#071226 0%, #071a2b 100%);color:#e6eef8;margin:0}
+
+  /* Top menu */
+  .top-nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:linear-gradient(90deg,rgba(255,90,124,0.06), rgba(124,77,255,0.04));backdrop-filter:blur(6px);position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,0.03)}
+  .brand{display:flex;align-items:center;gap:.75rem}
+  .brand .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 6px 18px rgba(124,77,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700}
+  .brand h3{margin:0;font-size:1.05rem;color:#fff}
+  .nav-links{display:flex;gap:1rem;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;padding:.5rem .75rem;border-radius:8px;transition:all .18s}
+  .nav-links a:hover{color:#fff;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent)}
+  .cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:.5rem .9rem;border-radius:10px;color:#071226;font-weight:600}
+
+  /* Carousel - CSS radio trick */
+  .carousel{position:relative;overflow:hidden;width:100%;max-height:420px}
+  .slides{display:flex;transition:transform .6s ease;width:300%}
+  .slide{min-width:100%;padding:3.5rem 2rem;display:flex;align-items:center;gap:2rem;background-size:cover;background-position:center}
+  .slide .copy{max-width:680px}
+  .eyebrow{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+  .hero-title{font-size:2.25rem;margin:.35rem 0;color:#fff}
+  .hero-body{color:var(--muted);margin-bottom:1rem}
+  
+  /* radio controls */
+  .carousel-controls{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:.5rem}
+  .control{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.06)}
+  
+  /* Cards grid */
+  .cards{padding:2.25rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+  .card .card-media{height:140px;background-size:cover;background-position:center}
+  .card .card-body{padding:1rem}
+  .card h4{margin:0 0 .5rem 0;color:#fff}
+  .card p{margin:0;color:var(--muted);font-size:.95rem}
+
+  /* Footer */
+  .site-footer{margin-top:2rem;padding:2rem;background:linear-gradient(180deg,rgba(10,16,28,0.6),rgba(5,9,14,0.8));border-top:1px solid rgba(255,255,255,0.02)}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}
+  .contact{color:var(--muted)}
+  .socials{display:flex;gap:.6rem;margin-top:.6rem}
+  .socials a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none}
+
+  /* responsive */
+  @media (max-width: 980px){.cards{grid-template-columns:repeat(2,1fr)}.hero-title{font-size:1.6rem}.slides{width:300%}}
+  @media (max-width:600px){.nav-links{display:none}.cards{grid-template-columns:1fr}.carousel{max-height:360px}}
+
+
+
+</style>
+
+
+<!-- Top navigation -->
+
+<header class="top-nav">
+  <div class="brand">
+    <div class="logo">A</div>
+    <h3>Aichip</h3>
+  </div>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#features">Features</a>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a class="cta" href="#contact">Contact</a>
+  </nav>
+</header>
+
+
+
+<!-- Carousel (pure CSS) -->
+<section class="carousel" aria-label="Featured carousel">
+  <div class="slides" id="slides">
+    <div class="slide" style="background-image:linear-gradient(90deg, rgba(124,77,255,0.18), rgba(255,90,124,0.12)), url('');">
+      <div class="copy">
+        <div class="eyebrow">New</div>
+        <div class="hero-title">Deploy AI models faster with Aichip</div>
+        <div class="hero-body">Lightweight tooling, studio-quality pipelines, and predictable performance—designed for production.</div>
+        <div style="display:flex;gap:.6rem"><a class="cta" href="#products">Get started</a><a style="padding:.45rem .65rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none" href="#learn">Learn more</a></div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:linear-gradient(90deg, rgba(0,200,255,0.08), rgba(124,77,255,0.06)), url('');">
+      <div class="copy">
+        <div class="eyebrow">Announcement</div>
+        <div class="hero-title">Optimized inference on edge and cloud</div>
+        <div class="hero-body">Smaller binaries, faster startup, and consistent results across devices.</div>
+        <div style="display:flex;gap:.6rem"><a class="cta" href="#features">See benchmarks</a><a style="padding:.45rem .65rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none" href="#docs">Docs</a></div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:linear-gradient(90deg, rgba(255,90,124,0.06), rgba(124,77,255,0.06)), url('');">
+      <div class="copy">
+        <div class="eyebrow">Featured</div>
+        <div class="hero-title">A developer-first experience</div>
+        <div class="hero-body">Integrations, CI pipelines, and observability built around your workflow.</div>
+        <div style="display:flex;gap:.6rem"><a class="cta" href="#signup">Join waitlist</a><a style="padding:.45rem .65rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none" href="#blog">Blog</a></div>
+      </div>
+    </div>
+  </div>
+  <!-- Simple JS-free controls (auto-play using CSS animation would be intrusive; keep manual via scroll) -->
+  <div class="carousel-controls" role="tablist" aria-label="Carousel navigation">
+    <button class="control" title="Slide 1" onclick="document.getElementById('slides').style.transform='translateX(0)'" aria-label="Slide 1"></button>
+    <button class="control" title="Slide 2" onclick="document.getElementById('slides').style.transform='translateX(-100%)'" aria-label="Slide 2"></button>
+    <button class="control" title="Slide 3" onclick="document.getElementById('slides').style.transform='translateX(-200%)'" aria-label="Slide 3"></button>
+  </div>
+</section>
+
+
+
+<!-- 8 Cards -->
+<section id="features" class="cards" aria-label="Features grid">
+  <!-- Repeat 8 cards -->
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#7c4dff55,#ff5a7c55);"></div>
+    <div class="card-body"><h4>High performance</h4><p>Low-latency inference optimized for common hardware.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#ff6b6b55,#ffd16655);"></div>
+    <div class="card-body"><h4>Easy integration</h4><p>Connect with existing tooling and CI pipelines with minimal changes.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#00c2ff55,#7c4dff55);"></div>
+    <div class="card-body"><h4>Developer tools</h4><p>Local dev servers, model inspectors and reproducible builds.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#34d39955,#60a5fa55);"></div>
+    <div class="card-body"><h4>Security</h4><p>Secure model signing, permissioned deployments, and audit logs.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#ff9a9e55,#fecfef55);"></div>
+    <div class="card-body"><h4>Scalable</h4><p>Scale horizontally with predictable throughput and cost.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#a78bfa55,#7dd3fc55);"></div>
+    <div class="card-body"><h4>Observability</h4><p>Built-in metrics and tracing for model performance.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#f9731655,#f43f5e55);"></div>
+    <div class="card-body"><h4>Edge ready</h4><p>Small binaries, energy-efficient runtimes for edge devices.</p></div>
+  </article>
+  <article class="card">
+    <div class="card-media" style="background-image:linear-gradient(120deg,#06b6d455,#7c4dff55);"></div>
+    <div class="card-body"><h4>Open standards</h4><p>Supports common model formats and interoperability.</p></div>
+  </article>
+</section>
+
+
+
+<!-- Footer -->
+<footer id="contact" class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h3 style="margin:0 0 .5rem 0">Aichip</h3>
+      <p class="contact">Delivering production-ready AI tooling. 1234 Innovation Way, Suite 100<br/>San Francisco, CA</p>
+      <div class="socials" style="margin-top:12px">
+        <a href="#" aria-label="Twitter">T</a>
+        <a href="#" aria-label="Github">G</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin:0 0 .5rem 0">Contact</h4>
+      <p class="contact">Email: <a href="mailto:hello@aichip.dev" style="color:var(--muted);text-decoration:none">hello@aichip.dev</a><br/>Phone: <span style="color:var(--muted)">+1 (415) 555-0123</span></p>
+    </div>
+    <div style="max-width:320px;color:var(--muted)">
+      <h4 style="margin:0 0 .5rem 0">Get in touch</h4>
+      <p class="contact">Sign up for updates, try developer previews, or request a demo.</p>
+      <a class="cta" href="#signup">Request demo</a>
+    </div>
+  </div>
+</footer>
+
+
+<router-outlet />
